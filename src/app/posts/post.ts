@@ -1,7 +1,66 @@
-/* eslint-disable prettier/prettier */
-type PostID = number;
+export type PostID = number;
 
-type PostCoverFormat = {
+export type AuthorAttributesData = {
+  name: string;
+  created_by: number;
+  updated_by: number;
+  created_at: string;
+  updated_at: string;
+};
+
+export type PostAuthor = {
+  data: {
+    id: PostID;
+    attributes: AuthorAttributesData;
+  };
+};
+
+export type CategoryAttributesData = {
+  name: string;
+  created_by: number;
+  updated_by: number;
+  publishedAt: string;
+};
+
+export type PostCategory = {
+  data: {
+    id: PostID;
+    attributes: CategoryAttributesData;
+  };
+};
+
+export type PostCreatedBy = {
+  id: PostID;
+  firstname: string;
+  lastname: string;
+  username: null;
+};
+
+export type PostCover = {
+  data: [
+    {
+      id: PostID;
+      attributes: PostCoverAttributes;
+    },
+  ];
+};
+
+export type PostCoverAttributes = {
+  alternativeText: string;
+  caption: string;
+  previewUrl: null;
+  provider: string;
+  created_by: number;
+  updated_by: number;
+  created_at: string;
+  updated_at: string;
+  formats: {
+    thumbnail: PostCoverFormat;
+    small: PostCoverFormat;
+  };
+};
+
+export type PostCoverFormat = {
   ext: string;
   url: string;
   hash: string;
@@ -17,69 +76,20 @@ type PostCoverFormat = {
   };
 };
 
-type PostCoverAttributes = PostCoverFormat & {
-  alternativeText: string;
-  caption: string;
-  formats: {
-    thumbnail: PostCoverFormat;
-    small: PostCoverFormat;
-    medium: PostCoverFormat;
-    large: PostCoverFormat;
-  };
-  previewUrl: null;
-  provider: string;
-  createdAt: string;
-  updatedAt: string;
-};
-
-type PostCover = {
-  data: {
-    id: PostID;
-    attributes: PostCoverAttributes;
-  };
-};
-
-type Attributes = {
-  name: string;
-  createdAt: string;
-  updatedAt: string;
-  publishedAt: string;
-};
-
-type PostAuthor = {
-  data: {
-    id: PostID;
-    attributes: Attributes;
-  };
-};
-
-type PostCategory = PostAuthor;
-
-type PostAttributes = {
+export type PostAttributesData = {
   title: string;
   content: string;
   slug: string;
-  createdAt: string;
-  updatedAt: string;
-  publishedAt: string;
   author: PostAuthor;
   category: PostCategory;
+  created_by: PostCreatedBy;
+  updated_by: PostCreatedBy;
+  created_at: string;
+  updated_at: string;
   cover: PostCover;
 };
 
 export type PostData = {
   id: PostID;
-  attributes: PostAttributes;
+  attributes: PostAttributesData;
 };
-
-export interface getPostsData {
-  data: PostData[];
-  meta: {
-    pagination: {
-      page: number;
-      pageSize: number;
-      pageCount: number;
-      total: number;
-    };
-  };
-}
