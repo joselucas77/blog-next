@@ -13,13 +13,13 @@ export default async function Card({ id, title, cover, name }: PostCardProps) {
   return (
     <Container>
       <PostCardCover>
-        <Link href="/post/[slug]" as={`/post/${id}`}>
+        <Link href="/post/[id]" as={`/post/${id}`}>
           <img src={cover} alt={name} />
         </Link>
       </PostCardCover>
 
       <PostCardHeading>
-        <Link href="/post/[slug]" as={`/post/${id}`}>
+        <Link href="/post/[id]" as={`/post/${id}`}>
           {title}
         </Link>
       </PostCardHeading>

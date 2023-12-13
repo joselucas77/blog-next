@@ -4,7 +4,7 @@ import { Container } from './style';
 export default function Header() {
   return (
     <Container>
-      <Link href="/">Sou o cabeçalho</Link>
+      <Link href="/">Your Favorite Blog</Link>
     </Container>
   );
 }
