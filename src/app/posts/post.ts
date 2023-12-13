@@ -1,11 +1,30 @@
 export type PostID = number;
 
-export type AuthorAttributesData = {
-  name: string;
-  created_by: number;
-  updated_by: number;
-  created_at: string;
-  updated_at: string;
+export type PostData = {
+  id: PostID;
+  attributes: PostAttributesData;
+};
+
+export type PostAttributesData = {
+  title: string;
+  content: PostContent[];
+  slug: string;
+  cover: PostCover;
+  author: PostAuthor;
+  category: PostCategory;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+};
+
+export type PostContent = {
+  type: string;
+  children: PostText[];
+};
+
+export type PostText = {
+  text: string;
+  type: string;
 };
 
 export type PostAuthor = {
@@ -15,10 +34,10 @@ export type PostAuthor = {
   };
 };
 
-export type CategoryAttributesData = {
+export type AuthorAttributesData = {
   name: string;
-  created_by: number;
-  updated_by: number;
+  createdAt: string;
+  updatedAt: string;
   publishedAt: string;
 };
 
@@ -29,35 +48,36 @@ export type PostCategory = {
   };
 };
 
-export type PostCreatedBy = {
-  id: PostID;
-  firstname: string;
-  lastname: string;
-  username: null;
+export type CategoryAttributesData = {
+  name: string;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
 };
 
 export type PostCover = {
-  data: [
-    {
-      id: PostID;
-      attributes: PostCoverAttributes;
-    },
-  ];
+  data: {
+    id: PostID;
+    attributes: PostCoverAttributes;
+  };
 };
 
 export type PostCoverAttributes = {
+  name: string;
   alternativeText: string;
   caption: string;
-  previewUrl: null;
-  provider: string;
-  created_by: number;
-  updated_by: number;
-  created_at: string;
-  updated_at: string;
+  width: number;
+  height: number;
   formats: {
     thumbnail: PostCoverFormat;
     small: PostCoverFormat;
+    large: PostCoverFormat;
+    medium: PostCoverFormat;
   };
+  previewUrl: null;
+  provider: string;
+  createdAt: string;
+  updatedAt: string;
 };
 
 export type PostCoverFormat = {
@@ -74,22 +94,4 @@ export type PostCoverFormat = {
     public_id: string;
     resource_type: string;
   };
-};
-
-export type PostAttributesData = {
-  title: string;
-  content: string;
-  slug: string;
-  author: PostAuthor;
-  category: PostCategory;
-  created_by: PostCreatedBy;
-  updated_by: PostCreatedBy;
-  created_at: string;
-  updated_at: string;
-  cover: PostCover;
-};
-
-export type PostData = {
-  id: PostID;
-  attributes: PostAttributesData;
 };

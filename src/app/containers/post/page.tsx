@@ -2,28 +2,42 @@
 import { PostData } from '../../posts/post';
 import Header from '../../components/Header/page';
 import Main from '../../components/Main/page';
-import Markdown from 'react-markdown';
 import Footer from '../../components/Footer/page';
+import Heading from '../../components/PostHeading/page';
+import PostCover from '../../components/PostCover/page';
+import PostDetails from '../../components/PostDetails/page';
+import Comments from '../../comments/page';
+import { getAllText } from '../../services/get-all-text';
+import { PostContant } from '../../components/PostContent/page';
 
 export type PostProps = {
-  post: PostData[];
+  post: PostData;
 };
 
-export default function Post({ post }: PostProps) {
+export default async function Post({ post }: PostProps) {
+  const postText = await getAllText(post);
   return (
     <>
       <Header />
       <Main>
-        {post.map((data) => (
-          <div key={data.id}>
-            <h2>{data.attributes.title}</h2>
-            <Markdown>
-              {data.attributes.content
-                .map((contents) => contents.children.map((child) => child.text))
-                .toString()}
-            </Markdown>
-          </div>
-        ))}
+        <div key={post.id}>
+          <Heading>{post.attributes.title}</Heading>
+          <PostCover
+            coverUrl={post.attributes.cover.data.attributes.formats.large.url}
+            alt={post.attributes.cover.data.attributes.name}
+          />
+          <PostDetails
+            date={post.attributes.createdAt}
+            author={post.attributes.author.data.attributes.name}
+            category={post.attributes.category.data.attributes.name}
+          />
+          <PostContant content={postText} />
+          <Comments
+            id={post.id}
+            title={post.attributes.title}
+            slug={post.attributes.slug}
+          />
+        </div>
       </Main>
       <Footer />
     </>
