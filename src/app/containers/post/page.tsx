@@ -6,7 +6,7 @@ import Footer from '../../components/Footer/page';
 import Heading from '../../components/PostHeading/page';
 import PostCover from '../../components/PostCover/page';
 import PostDetails from '../../components/PostDetails/page';
-import Comments from '../../comments/page';
+// import Comments from '../../comments/page';
 import { getAllText } from '../../services/get-all-text';
 import { PostContant } from '../../components/PostContent/page';
 
@@ -32,11 +32,11 @@ export default async function Post({ post }: PostProps) {
             category={post.attributes.category.data.attributes.name}
           />
           <PostContant content={postText} />
-          <Comments
+          {/* <Comments
             id={post.id}
             title={post.attributes.title}
             slug={post.attributes.slug}
-          />
+          /> */}
         </div>
       </Main>
       <Footer />
