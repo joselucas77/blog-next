@@ -18,11 +18,7 @@ export default async function Card({ id, title, cover, name }: PostCardProps) {
         </Link>
       </PostCardCover>
 
-      <PostCardHeading>
-        <Link href="/post/[id]" as={`/post/${id}`}>
-          {title}
-        </Link>
-      </PostCardHeading>
+      <PostCardHeading>{title}</PostCardHeading>
     </Container>
   );
 }

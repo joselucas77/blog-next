@@ -17,8 +17,4 @@ export const PostCardCover = styled.div`
 
 export const PostCardHeading = styled.h2`
   font-size: 1.8rem;
-
-  a {
-    color: #333333;
-  }
 `;
