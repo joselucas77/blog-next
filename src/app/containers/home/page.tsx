@@ -4,7 +4,7 @@ import Header from '../../components/Header/page';
 import Main from '../../components/Main/page';
 import Card from '../../components/Cards/page';
 import Footer from '../../components/Footer/page';
-import { getAllPosts } from '@/app/services/get-all-data-posts';
+import { getAllPosts } from '../../services/get-all-data-posts';
 
 export default async function Home() {
   const posts = await getAllPosts('sort=id:desc');

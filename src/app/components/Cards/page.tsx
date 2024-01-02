@@ -1,6 +1,6 @@
 'use client';
 import Link from 'next/link';
-import { Container, PostCardCover, PostCardHeading } from './style';
+import { Container, PostCardCover, PostCardHeading } from '../Cards/style';
 
 export type PostCardProps = {
   id: number;
