@@ -1,4 +1,17 @@
+# Your Favorite Blog
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
+Trata-se de um blog com algumas publicações. Este foi meu primeiro contato com framework Next.JS, o qual ultilizei para criar as páginas buscando dados(imagens, titulos e outras informações) de uma API, criada também por mim, com o CMS Strapi.
+
+<img src="public/gif.gif" alt="visualização no pc">
+
+## Tecnologias ultilizadas e informações adicionais
+
+- Next.JS (versão 13)
+- Typescript
+- [Strapi](https://docs.strapi.io/)
+- [blog-strapi (API criada para este projeto)](https://github.com/joselucas77/blog-strapi)
 
 ## Getting Started
 
